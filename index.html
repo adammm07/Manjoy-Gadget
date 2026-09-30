@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MANJOY GADGET — Gadgets & Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  .brand-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+/* ==============================
+   THREE DOT MORE MENU
+   ============================== */
+
+.more-menu {
+  position: relative;
+  display: inline-block;
+  z-index: 10000;
+}
+
+.more-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 28px !important;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  line-height: 1;
+  pointer-events: auto !important;
+}
+
+.more-dropdown {
+  display: none !important;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 160px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.more-dropdown.show {
+  display: block !important;
+}
+
+.more-dropdown a {
+  display: block !important;
+  padding: 12px 15px !important;
+  text-decoration: none !important;
+  color: #333 !important;
+  font-size: 14px;
+}
+
+.more-dropdown a:hover {
+  background: #f2f2f2;
+}
+
+
+/* ==============================
+   NAVIGATION DROPDOWN
+   ============================== */
+
+.nav {
+  position: relative;
+  z-index: 9998;
+}
+
+.nav-inner {
+  position: relative;
+  z-index: 9999;
+}
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10000;
+  pointer-events: auto !important;
+}
+
+.nav-drop-btn {
+  position: relative;
+  z-index: 10001;
+
+  background: none;
+  border: none;
+  padding: 12px 18px;
+
+  font-size: 15px;
+  font-weight: 600;
+  color: inherit;
+
+  cursor: pointer;
+  pointer-events: auto !important;
+}
+
+.nav-dropdown-content {
+  display: none;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 190px;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+  overflow: hidden;
+
+  z-index: 10002;
+}
+
+.nav-dropdown-content.show {
+  display: block;
+}
+
+.nav-dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+
+  text-decoration: none;
+  color: #333;
+
+  font-size: 14px;
+}
+
+.nav-dropdown-content a:hover {
+  background: #f2f2f2;
+}
+
+
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container header-main">
+     <a class="brand" href="#">
+  <img src="images/image.jpeg"
+       alt="Manjoy Gadget Logo"
+       class="brand-logo">
+
+  <span>
+    <strong>MANJOY GADGET</strong>
+    <small>Gadgets • Electronics • Better Life</small>
+  </span>
+</a>
+
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Search for products..." aria-label="Search products">
+        <button id="searchBtn" aria-label="Search">⌕</button>
+      </div>
+
+     <div class="header-actions">
+  <button class="icon-btn" id="themeBtn" title="Toggle theme">☼</button>
+  <button class="icon-btn" id="wishlistBtn" title="Wishlist">
+    ♡<span class="badge" id="wishCount">0</span>
+  </button>
+  <button class="icon-btn" id="cartBtn" title="Shopping cart">
+    🛒<span class="badge" id="cartCount">0</span>
+  </button>
+  <button class="login-btn">♙ &nbsp; Login / Sign Up</button>
+  <!-- Three Dot Menu -->
+  <div class="more-menu">
+    <button class="more-btn" id="moreBtn" title="More Options">⋮</button>
+    <div class="more-dropdown" id="moreDropdown">
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#products">Categories</a>
+      <a href="#">Contact Us</a>
+      <a href="#">About Us</a>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <nav class="nav">
+  <div class="container nav-inner">
+
+    <div class="nav-dropdown">
+      <button class="nav-drop-btn" id="categoryMenuBtn">
+        ☰ Menu ▾
+      </button>
+
+      <div class="nav-dropdown-content" id="categoryMenu">
+
+        <a href="#" class="menu-home">Home</a>
+
+        <a href="#products" data-category="Audio">🎧 Audio</a>
+
+        <a href="#products" data-category="Power Bank">🔋 Powerbank</a>
+
+        <a href="#products" data-category="Chargers">🔌 Chargers</a>
+
+        <a href="#products" data-category="Accessories">🎒 Accessories</a>
+
+        <a href="#products">🛍️ All Products</a>
+
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div class="hero-copy">
+        <p class="eyebrow">UPGRADE YOUR TECH LIFE</p>
+        <h1>Latest Gadgets &<br>Electronics</h1>
+        <p>Discover great deals on smartphones, laptops, accessories, gaming gear and more.</p>
+        <button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+      </div>
+      <div class="hero-devices">
+        <div class="device phone">📱</div>
+        <div class="device laptop">💻</div>
+        <div class="device headphones">🎧</div>
+      </div>
+    </section>
+
+    <section class="container categories-section">
+      <div class="section-heading">
+        <h2>Shop by Category</h2>
+        <button class="link-btn" id="allCategories">View All →</button>
+      </div>
+      <div class="categories" id="categories"></div>
+    </section>
+
+    <section class="container shop-layout" id="products">
+      <aside class="filters">
+        <div class="filter-head">
+          <h3>Filters</h3>
+          <button id="clearFilters">Clear</button>
+        </div>
+
+        <div class="filter-group">
+          <h4>Category</h4>
+          <label><input type="checkbox" value="Smartphones" class="category-filter"> Smartphones</label>
+          <label><input type="checkbox" value="Laptops" class="category-filter"> Laptops</label>
+          <label><input type="checkbox" value="Audio" class="category-filter"> Audio</label>
+          <label><input type="checkbox" value="Accessories" class="category-filter"> Accessories</label>
+          <label><input type="checkbox" value="Gaming" class="category-filter"> Gaming</label>
+          <label><input type="checkbox" value="Monitors" class="category-filter"> Monitors</label>
+          <label><input type="checkbox" value="Cameras" class="category-filter"> Cameras</label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Maximum Price</h4>
+          <input id="priceRange" type="range" min="100" max="10000" value="10000" step="100">
+          <div class="range-label"><span>RM 100</span><strong id="priceValue">RM 10,000</strong></div>
+        </div>
+
+        <div class="filter-group">
+          <h4>Minimum Rating</h4>
+          <label><input type="radio" name="rating" value="0" checked> All ratings</label>
+          <label><input type="radio" name="rating" value="4"> ⭐ 4.0 & up</label>
+          <label><input type="radio" name="rating" value="4.5"> ⭐ 4.5 & up</label>
+        </div>
+      </aside>
+
+      <section class="products-area">
+        <div class="section-heading">
+          <div>
+            <h2>Featured Products</h2>
+            <span class="result-count" id="resultCount"></span>
+          </div>
+          <select id="sortSelect" class="sort-select">
+            <option value="popular">Sort by: Popularity</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+       <a class="brand footer-brand" href="#">
+  <img src="images/image.jpeg"
+       alt="Manjoy Gadget Logo"
+       class="brand-logo">
+  <strong>MANJOY GADGET</strong>
+</a>
+        <p>Your everyday destination for gadgets and electronics.</p>
+      </div>
+      <div><h4>Shop</h4><a href="#products">All Products</a><a href="#products">Smartphones</a><a href="#products">Laptops</a></div>
+      <div><h4>Support</h4><a href="#">Contact Us</a><a href="#">Shipping</a><a href="#">Returns</a></div>
+      <div><h4>Newsletter</h4><p>Get updates on new products and deals.</p><div class="newsletter"><input placeholder="Your email"><button>→</button></div></div>
+    </div>
+    <div class="container copyright">© 2026 MANJOY GADGET. Demo storefront.</div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer">
+    <div class="drawer-head"><h2>Your Cart <span id="cartTitleCount">(0)</span></h2><button class="close-btn" data-close>×</button></div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-footer">
+      <div class="total-line"><span>Subtotal</span><strong id="cartSubtotal">RM 0</strong></div>
+      <div class="total-line muted"><span>Shipping</span><strong>FREE</strong></div>
+      <div class="total-line grand"><span>Total</span><strong id="cartTotal">RM 0</strong></div>
+      <button class="primary full" id="checkoutBtn">Proceed to Checkout →</button>
+    </div>
+  </aside>
+
+  <aside class="drawer wishlist-drawer" id="wishlistDrawer">
+    <div class="drawer-head"><h2>My Wishlist <span id="wishlistTitleCount">(0)</span></h2><button class="close-btn" data-close>×</button></div>
+    <div class="drawer-body" id="wishlistItems"></div>
+  </aside>
+
+  <div class="modal" id="checkoutModal">
+    <div class="modal-card">
+      <button class="close-btn modal-close" data-close>×</button>
+      <div class="checkout-steps"><span class="current">1 Shipping</span><span>2 Payment</span><span>3 Confirm</span></div>
+      <h2>Checkout</h2>
+      <form id="checkoutForm">
+        <div class="form-grid">
+          <label>Full name<input required placeholder="Muhammad Adam"></label>
+          <label>Phone number<input required placeholder="+60 12 345 6789"></label>
+          <label class="wide">Address<input required placeholder="Street address"></label>
+          <label>City<input required placeholder="Kuantan"></label>
+          <label>Postcode<input required placeholder="25000"></label>
+        </div>
+        <div class="checkout-summary"><span>Order total</span><strong id="checkoutTotal">RM 0</strong></div>
+        <button class="primary full" type="submit">Continue to Payment →</button>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="modal" id="productModal">
+    <div class="modal-card product-detail-card">
+      <button class="close-btn modal-close" data-close>×</button>
+      <div id="productDetailContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
